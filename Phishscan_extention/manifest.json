@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "PhishScanner",
+  "version": "1",
+  "description": "It scan the sites, and warn if it's a phishing site",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting", "notifications"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "icons": { 
+        "16": "phishscan.png",
+        "48": "phishscan.png",
+        "128": "phishscan.png" 
+   },
+  "background": {
+        "service_worker": "./js/background.js"
+   },
+   "action":{
+    "default_popup": "./html/popup.html"
+   },
+  "content_scripts": [
+      {
+        "run_at": "document_end",
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": ["./js/script.js"]
+      }
+   ]
+}
